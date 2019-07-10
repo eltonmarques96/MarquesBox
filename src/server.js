@@ -1,14 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
+const path = require('path');
 const app = express();
+const cors = require('cors');
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+
+
 app.use(cors());
 
 
-const server = require('http').Server(app);
-const io = require('socket.io')(server);
-const path = require('path');
-const cors = require('cors');
+
 
 
 io.on('connection',socket =>{
