@@ -1,17 +1,16 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const path = require('path');
+const mongoose = require('mongoose');
+
 const app = express();
+
+
+
 const cors = require('cors');
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
-
 app.use(cors());
-
-
-
-
 
 io.on('connection',socket =>{
     socket.on('connectRoom', box => {
@@ -28,8 +27,7 @@ mongoose.connect(
 
 app.use((req,res, next) => {
     req.io = io;
-
-    return next;
+    return next();
 });
 
 
